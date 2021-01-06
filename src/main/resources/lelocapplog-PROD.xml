@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    
+    <appender name="FileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/lelocapp.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>[LELOCAPP] %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15.15t{14}] %-40.40logger{39} : %m%n</pattern>
+        </layout>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/lelocapp.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+  	<logger name="org.springframework" level="INFO"/>
+  
+ 	<logger name="org.springframework.security" level="INFO"/>
+    
+    <root level="INFO">
+        <appender-ref ref="FileAppender"/>
+    </root>
+
+ 	<!-- COURSIERPRIVE LOGGERS - BEGIN -->
+  
+   	<logger name="com.webproject" level="INFO"/>
+    	
+	<!-- COURSIERPRIVE LOGGERS - END  -->
+	
+</configuration>

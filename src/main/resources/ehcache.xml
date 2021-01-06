@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+ updateCheck="false">
+
+ <defaultCache 
+ 	maxElementsInMemory="500" 
+ 	eternal="false"
+ 	overflowToDisk="false"   
+ 	memoryStoreEvictionPolicy="LFU" />
+ <cache 
+ 	name="userCacheById"
+ 	maxElementsInMemory="1000" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	timeToLiveSeconds="1800"
+ 	timeToIdleSeconds="0" 
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+<cache 
+ 	name="townCacheById" 
+ 	maxElementsInMemory="1000" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="townCacheByCityId" 
+ 	maxElementsInMemory="25" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 
+<cache 
+ 	name="cityCacheById" 
+ 	maxElementsInMemory="25" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="cityCacheByRegionId" 
+ 	maxElementsInMemory="50" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="regionCacheById" 
+ 	maxElementsInMemory="25" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="regionCacheByCountryId" 
+ 	maxElementsInMemory="5" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="featurOptionCacheByFeatureId" 
+ 	maxElementsInMemory="50" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="detailsCacheBySubCategoryId" 
+ 	maxElementsInMemory="50" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="featuresCacheBySubCategoryId" 
+ 	maxElementsInMemory="50" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="categoryCache" 
+ 	maxElementsInMemory="1" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+ <cache 
+ 	name="" 
+ 	maxElementsInMemory="25" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+<cache 
+ 	name="opeTypeCacheByCategoryId" 
+ 	maxElementsInMemory="10" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 	
+<cache 
+ 	name="detailCacheByDTitleId" 
+ 	maxElementsInMemory="50" 
+ 	eternal="false"
+ 	overflowToDisk="true"
+ 	memoryStoreEvictionPolicy="LFU" />
+ 
+</ehcache>

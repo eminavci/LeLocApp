@@ -1,0 +1,211 @@
+<div ng-controller="barSearchController" id="barSearchController">
+    <div class="row" >
+
+        <div class="col-md-3" style="padding-right:25px">
+            <button class="btn btn-large btn-block btn-default full-width" type="button">
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                View On Map</button>
+
+            <div class="panel panel-default" style="margin-top: 10px">
+                <div class="panel-heading"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span><b>&nbsp;Categories</b></div>
+                <div class="panel-body" style="padding: 7px 4px;">Category Content</div>
+            </div>
+            <div style="clear: both"></div>
+            <div class="panel panel-default" style="margin-top:-10px">
+                <div class="panel-heading"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span><b>&nbsp;Filters</b></div>
+                <div class="panel-body" style="padding: 7px 4px;">
+
+                    <div class="accordion" id="accordion" >
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <label class="accordion-toggle" data-toggle="collapse" data-target="#collapseOne" href="#">
+                                    &nbsp;Price
+                                    </label>
+                            </div>
+                            <div id="collapseOne" class=" collapse in">
+                                <div class="accordion-inner">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <label class="accordion-toggle" data-toggle="collapse" data-target="#collapseTwo" href="#">
+                                    &nbsp;Address
+                                </label>
+                            </div>
+                            <div id="collapseTwo" class=" collapse">
+                                <div class="accordion-inner">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richards
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <label class="accordion-toggle" data-toggle="collapse" data-target="#collapseThree" href="#">
+                                    Number Of Room
+                                </label>
+                            </div>
+                            <div id="collapseThree" class=" collapse">
+                                <div class="accordion-inner">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-9" style=" padding-left:0px; margin-left: -14px; padding-right:0px">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body" style="padding: 8px 10px;">Filter Items</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="btn-group" data-toggle="buttons">
+                        <a href="#" class="btn active btn-default">
+                            <input name="a" id="css1" class="active" type="radio" data-ng-model="0">All
+                        </a>
+                        <a href="#" class="btn btn-default">
+                            <input name="v" id="css2"  type="radio" data-ng-model="1">From Individual Owner
+                        </a>
+                        <a href="#" class="btn btn-default">
+                            <input name="b" id="css3" type="radio" checked="checked" data-ng-model="2">From Real Estate Agency
+                        </a>
+                        <a href="#" class="btn btn-default">
+                            <input name="d" id="css4"  type="radio" data-ng-model="3">From Building Company
+                        </a>
+
+                        <a href="#" class="btn btn-default">
+                            <input name="e" id="css4" type="radio" data-ng-model="4">From Institution
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2" style="padding-left:0px">
+                    <select class="form-control input-sm" id="currency" ng-model="currency" ng-change="priceformat">
+                        <option value="0" ng-selected="true">Order Your Result By.</option>
+                        <option value="1" >Decreasing by Price</option>
+                        <option value="2">Increasing by Price</option>
+                        <option value="3">Descending by Date</option>
+                        <option value="4">Adcending by Date</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-12">
+                    <table class="table resultListTbl table-striped table-hover table-condensed" >
+                        <thead>
+                            <tr>
+                                <td style="min-width: 125px"></td>
+                                <td style="min-width: 80px">Real Estate Type</td>
+                                <td style="width:100%">Ad Title</th>
+                                <td style="min-width: 50px">M^2</td>
+                                <td style="min-width: 60px">Number of Rooms</td>
+                                <td style="min-width: 90px">Price</td>
+                                <td style="min-width: 90px">Ad Date</td>
+                                <td style="min-width: 120px">City/County</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-click="showItem()">
+                                <td>
+
+                                    <div class="imglistcard vcenter">
+                                        <img src="/static/icons/image.jpg" alt="Pulpit Rock" class="img-responsive center-block">
+                                    </div>
+
+                                </td>
+                                <td>dsf</td>
+                                <td>d</td>
+                                <td>dfgfdg</td>
+                                <td>dfg</td>
+                                <td>fdg</td>
+                                <td>dg</td>
+                                <td>dfgfdgfdg</td>
+                            </tr>
+                            <tr>
+                                <td>dsf</td>
+                                <td>dsf</td>
+                                <td>d</td>
+                                <td>dfgfdg</td>
+                                <td>dfg</td>
+                                <td>fdg</td>
+                                <td>dg</td>
+                                <td>dfgfdgfdg</td>
+                            </tr>
+                            <tr>
+                                <td>dsf</td>
+                                <td>dsf</td>
+                                <td>d</td>
+                                <td>dfgfdg</td>
+                                <td>dfg</td>
+                                <td>fdg</td>
+                                <td>dg</td>
+                                <td>dfgfdgfdg</td>
+                            </tr>
+                            <tr>
+                                <td>dsf</td>
+                                <td>dsf</td>
+                                <td>d</td>
+                                <td>dfgfdg</td>
+                                <td>dfg</td>
+                                <td>fdg</td>
+                                <td>dg</td>
+                                <td>dfgfdgfdg</td>
+                            </tr>
+                            <tr>
+                                <td>dsf</td>
+                                <td>dsf</td>
+                                <td>d</td>
+                                <td>dfgfdg</td>
+                                <td>dfg</td>
+                                <td>fdg</td>
+                                <td>dg</td>
+                                <td>dfgfdgfdg</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        <div>
+
+            <nav style="text-align:center">
+
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+        </div>
+
+
+
+    </div>
+
+</div>

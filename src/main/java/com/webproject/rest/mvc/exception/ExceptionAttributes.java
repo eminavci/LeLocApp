@@ -1,0 +1,13 @@
+package com.webproject.rest.mvc.exception;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpStatus;
+
+public interface ExceptionAttributes {
+
+	public Map<String, Object> getExceptionAttributes(Exception exception, HttpServletRequest httpRequest, HttpStatus httpStatus); 
+	
+}

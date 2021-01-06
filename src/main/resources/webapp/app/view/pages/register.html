@@ -1,0 +1,250 @@
+<div class="row" ng-controller="registerController" id="registerController">
+
+    <div class="col-md-6">
+        <div class="panel panel-default" style="margin-top:10px;">
+            <div class="panel-body" >
+            <form name="regForm" id="regForm" class="form-horizontal" required
+                  ng-submit="regSubmit()"> <!--novalidate-->
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Register for Free!</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="firstName">Name</label>
+                        <div class="col-md-5">
+                            <input id="firstName" name="firstName" type="text" placeholder="Enter your name" class="form-control input-md"
+                                   required
+                                   ng-model="user.firstName">
+                        </div>
+                        <label class="col-md-4 errorHint" ></label>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="lastName">Surname</label>
+                        <div class="col-md-5">
+                            <input id="lastName" name="lastName" type="text" placeholder="Enter your surname" class="form-control input-md"
+                                   required
+                                   ng-model="user.lastName">
+                        </div>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="email">Email</label>
+                        <div class="col-md-5">
+                            <input id="email" name="email" type="text" placeholder="Enter your email id" class="form-control input-md"
+                                   required
+                                   ng-change="emailError = false"
+                                   ng-model="account.email">
+                        </div>
+                        <label class="col-md-4 errorHint" ng-show="emailError">Email does not match eachother!</label>
+                    </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="confirmemail">Confirm Email</label>
+                        <div class="col-md-5">
+                            <input id="confirmemail" name="confirmemail" type="text" placeholder="Confirm your email id" class="form-control input-md"
+                                   required
+                                   ng-change="emailError = false"
+                                   ng-model="account.confirmemail">
+                        </div>
+                    </div>
+
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="password">Password</label>
+                        <div class="col-md-5">
+                            <input id="password" name="password" type="password" placeholder="Enter a password" class="form-control input-md"
+                                   required
+                                   ng-change="passwordError = false"
+                                   ng-model="account.password">
+                        </div>
+                        <label class="col-md-4 errorHint" ng-show="passwordError">{{passwordError}}</label>
+                    </div>
+                    <!-- Password input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="confirmpassword">Confirm Password</label>
+                        <div class="col-md-5">
+                          <input id="confirmpassword" name="confirmpassword" type="password" placeholder="Confirm your password" class="form-control input-md"
+                                   required
+                                 ng-change="passwordError = false"
+                                 ng-model="account.confirmpassword">
+                        </div>
+                    </div>
+
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="country">Country</label>
+                        <div class="col-md-5">
+                            <select id="country" name="country" class="form-control input-md"  ng-model="useraddress.country">
+                                <option value="76" selected="selected" ng-selected="true">France</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="city">City</label>
+                        <div class="col-md-5">
+                            <select id="city" name="city" class="form-control input-md" ng-model="useraddress.city"
+                                    ng-options="city.oid as city.code + ' - ' + city.name for city in cities">
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="addres">Address</label>
+                            <div class="col-md-5">
+                                <textarea id="addres" name="addres" placeholder="Enter the address" class="form-control input-md" style="resize:vertical;"
+                                          ng-model="useraddress.line1"></textarea>
+                            </div>
+                        </div>
+
+                     <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="postCode">Postcode</label>
+                        <div class="col-md-5">
+                            <input id="postCode" name="postCode" type="text" placeholder="Enter postcode" class="form-control input-md"
+                                   ng-model="useraddress.postCode">
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="street">Gender</label>
+                        <div class="col-md-6">
+                            <input type="radio" name="gender" value="0" ng-model="user.gender">&nbsp; Not Define
+                            <input type="radio" name="gender" value="1" ng-model="user.gender">&nbsp; Male
+                            <input type="radio" name="gender" value="2" ng-model="user.gender">&nbsp; Female
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="havecorpprofile"></label>
+                        <div class="col-md-5">
+                            <input id="havecorpprofile" name="havecorpprofile" type="checkbox" class="" ng-model="account.type" />
+                            <label style="color: #F00F0F; cursor: pointer" for="havecorpprofile">I have corporation profile!</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" ng-show="account.type" style="border:1px solid #dddddd; background-color: #F6F6F6">
+                        <p style="padding: 6px 0px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #dcdcdc">Corporative Profile Definition</p>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="corptype">Company Type</label>
+                            <div class="col-md-6">
+                                <select id="corptype" name="corptype" class="form-control input-sm"
+                                        ng-required="company.type"
+                                        ng-model="company.type">
+                                    <option label="REAL_ESTATE_AGENCY" value="REAL_ESTATE_AGENCY" selected="selected" ng-selected="company.type">Real Estate Agency</option>
+                                    <option label="BUILDING_COMPANY" value="BUILDING_COMPANY">Building Company</option>
+                                    <option label="INSTITUTION" value="INSTITUTION">Institution</option>
+                                    <option label="OTHER" value="OTHER">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="companyname">Company Name</label>
+                            <div class="col-md-6">
+                                <input type="text" id="companyname" name="companyname" placeholder="Enter the company name" class="form-control input-sm"
+                                       ng-required="account.type"
+                                       ng-model="company.officialName">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="companyshortname">Company ShortName</label>
+                            <div class="col-md-6">
+                                <input id="companyshortname" name="companyshortname" type="text" placeholder="Enter the company name abbreviation" class="form-control input-sm"
+                                       ng-required="account.type"
+                                       ng-model="company.shortName">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="website">Company Website</label>
+                            <div class="col-md-6">
+                                <input id="website" name="website" type="text" placeholder="Enter the company website" class="form-control input-sm"
+                                       ng-model="user.company.webSite">
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="city_comp">City</label>
+                            <div class="col-md-6">
+                                <select id="city_comp" name="city_comp" class="form-control input-sm"
+                                        ng-model="companyaddress.city"
+                                        ng-required="account.type"
+                                        ng-options="city.oid as city.code + ' - ' + city.name for city in cities">
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label input-sm" for="comp_addr">Company Address</label>
+                            <div class="col-md-6">
+                                <textarea id="comp_addr" name="comp_addr" placeholder="Enter the company address" class="form-control input-sm" style="resize:vertical;"
+                                          ng-required="account.type"
+                                          ng-model="companyaddress.line1"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="companyPostCode">Postcode</label>
+                            <div class="col-md-5">
+                                <input id="companyPostCode" name="companyPostCode" type="text" placeholder="Enter postcode" class="form-control input-sm"
+                                       ng-required="haveCorpProflile"
+                                       ng-model="companyaddress.postcode">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="signup"></label>
+                        <p class="col-md-9">I agree to <a href="#/termscinditions" target="_blank">Terms and Conditions</a></p>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="signup"></label>
+                        <div class="col-md-5">
+                            <button type="submit" id="signup" name="signup" class="btn btn-success" style="width:100%"
+                                   > <!--ng-disabled="regForm.$invalid"-->
+                                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
+                                Sign Up
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+
+                </fieldset>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6" >
+        <div class="panel panel-default" style="height:440px;margin-top: 48px">
+            <div class="panel-body" style="display: flex;align-items: center;justify-content: center;">
+                <div class="vertical_center">
+                    <h3>Member of LeLocApp?</h3>
+                    <p>Id you are already member of LeLocApp.com, you can login by clicking the button below.</p>
+                    <a href="#/login"  class="btn btn-default btn-md" style="width:160px;">
+                        <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>&nbsp;Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

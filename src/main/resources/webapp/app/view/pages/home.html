@@ -1,0 +1,149 @@
+<div ng-controller="homeController" id="homeController">
+<div class="row" >
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+
+
+            <div class="panel-body home-src-panel" id="home-src-panel1" ng-style="{'background-image': 'url(' + bgurlim + ')'}">
+
+                <div class="searchTabsContainer" >
+
+                    <div style="text-align:center;display: block" >
+                        <label ng-repeat='lst in catList'  class="btn btn-default btn-md" ng-model="$parent.category" uib-btn-radio="'{{lst.id}}'" ng-change="catSelected($index)" ng-class="{active: category==lst.id}"><i class="searchTabsicon" style="background-position:{{lst.pos_x}}px {{lst.pos_y}}px;" ></i>{{lst.catName}}</label>
+                    </div>
+                    <div class="searchTabsConttent">
+
+                        <form novalidate class="form-inline" role="form" ng-submit="searchForm" style="margin-bottom:4px;">
+                            <input type="hidden" ng-model="category">
+                            <div class="row" style="margin: 0;">
+                                <div class="form-group" >
+                                    <select class="form-control" id="opeType" style="width:140px"
+                                            ng-change="catOpeTypeChanged()"
+                                            ng-model="opeType"
+                                            ng-options="item.oid as item.name for item in opeTypes" chosen="chosen-select" data-placeholder="Select Operation">
+                                        <option value="" selected="selected">Select Operation</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" >
+                                    <select class="form-control" id="subcategory" style="width:180px"
+                                            ng-model="subcategory"
+                                            ng-options="item.oid as item.name for item in subCategories" chosen="chosen-select" data-placeholder="Select Category">
+                                        <option value="" selected="selected">Select Category</option>
+                                    </select>
+                                </div>
+                                <!--**NOTES** track by item.id will correct the value of options-->
+                                <div class="form-group" >
+                                    <select class="form-control" id="street" style="width:220px"
+                                            ng-change="regionSelected()"
+                                            ng-model="region"
+                                            ng-options="item.oid as item.name for item in regions" chosen="chosen-select" data-placeholder="Select Region">
+                                        <option value="" selected="selected">Select Region</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" >
+                                    <select class="form-control" id="city" style="width:220px"
+                                            ng-disabled="city.disabled"
+                                            ng-change="citySelected()"
+                                            ng-model="city"
+                                            ng-options="item.oid as item.code +' - ' + item.name for item in cities" chosen="chosen-select" data-placeholder="Select City" >
+                                        <option value="" selected="selected">Select City</option>
+                                    </select>
+                                </div>
+
+
+
+                                <div class="form-group" >
+                                    <select class="form-control" id="town" style="width:220px"
+
+                                            ng-model="town"
+                                            ng-options="item.oid as item.postCode + ' - ' + item.name for item in towns" chosen="chosen-select" data-placeholder="Select Town">
+                                        <option value="" selected="selected">Select Town</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin: 0;">
+                                <div class="form-group" >
+                                    <select class="form-control" id="fromwho" ng-model="fromwho">
+                                        <option label="INDIVIDUAL" value="INDIVIDUAL">From Individual Owner</option>
+                                        <option label="REAL_ESTATE_AGENCY" value="REAL_ESTATE_AGENCY">From Real Estate Agency</option>
+                                        <option label="BUILDING_COMPANY" value="BUILDING_COMPANY">From Building Company</option>
+                                        <option label="INSTITUTION" value="INSTITUTION">From Institution</option>
+                                        <option label="OTHER" value="OTHER">Other</option>
+                                        <option label="ALL" value="ALL">All</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" >
+                                    <input type="text" class="form-control" ng-model="minprice" placeholder="Min Price" fcsa-number="{ maxDecimals: 2, preventInvalidInput: true,prepend:'{{currency}}', min: 0}" style="width: 110px">
+                                </div>
+                                <div class="form-group" >
+                                    <input type="text" class="form-control" ng-model="maxprice" placeholder="Max Price" fcsa-number="{ maxDecimals: 2, preventInvalidInput: true,prepend:'{{currency}}', min: 0}" style="width: 110px">
+                                </div>
+                                <div class="form-group" >
+                                    <select class="form-control" id="currency" ng-model="currency" ng-change="priceformat">
+                                        <option value="€" ng-selected="true">EUR</option>
+                                        <option value="$">USD</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group" style="float:right; margin-right: 10px; margin-top:4px">
+                                    <button type="button" class="btn btn-primary btn-md" ng-click="searchonmap()">
+                                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>&nbsp;
+                                        Search On Map</button>
+                                </div>
+
+                                <div class="form-group" style="float:right; margin-right: 15px; margin-top:4px">
+                                    <button type="button" class="btn btn-success btn-md" ng-click="search()">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;
+                                        Search</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="padding-right:10px;">
+
+        <div class="panel panel-default" >
+            <div class="panel-heading"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <b style="padding-left:6px">Real Estate Showcase</b>
+                <a href="#/alllll" style="float:right;margin-right: 15px;">Display all showcase ads</a>
+        </div>
+            <div class="panel-body" style="padding : 10px 0px;">
+
+                <div class="row" style="margin: 0px;">
+
+
+                    <div class="col-md-2" style="padding-right:5px; padding-left: 5px;"
+                         ng-repeat="re in realEstates">
+                        <a href="#/ad/{{re.oid}}/{{re.name | lelocapurlformatter}}" class="thumbnail">
+                            <div class="imgcard vcenter">
+                                <img src="{{re.pictureUrl}}" alt="{{re.name}}" title="{{re.name}}"  class="img-responsive center-block" ng-cloak>
+                            </div>
+                            <p class="only2line">{{re.name}}</p>
+                            <p class="card-text"><b class="text-muted">{{re.price}}</b> <small class="text-muted">{{re.currency}}</small></p>
+                        </a>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>

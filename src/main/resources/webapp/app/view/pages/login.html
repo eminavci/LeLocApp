@@ -1,0 +1,43 @@
+<div class="row" ng-controller="loginController" id="loginController">
+
+    <div class="col-md-6" >
+        <div class="card card-container">
+            <h3 style="margin:0;padding:0; text-align: center">Login</h3><br>
+            <img id="profile-img" class="profile-img-card" src="/static/icons/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" ng-submit="login()">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="User Name" required autofocus ng-model="credentials.email">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="credentials.password">
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me" ng-model="credentials.rememberme">Remember Me!
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success btn-md" >
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
+                    Sign in</button>
+
+                <button type="button" ng-click="testim()" class="btn btn-success btn-md">Deneme</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot your password?
+            </a>
+        </div><!-- /card-container -->
+    </div>
+
+    <div class="col-md-6" style=" margin-left: -70px; ">
+        <div class="panel panel-default" style="height:440px;margin-top: 48px">
+            <div class="panel-body" style="display: flex;align-items: center;justify-content: center;">
+                <div class="vertical_center">
+                    <h3>Not A Member?</h3>
+                    <p>Sign up for our members to benefit from our special service.</p>
+                    <a href="#/register"  class="btn btn-default btn-md" style="width:160px;">
+                        <span class="glyphicon glyphicon glyphicon-forward" aria-hidden="true"></span>&nbsp;Sign Up
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

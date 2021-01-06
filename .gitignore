@@ -1,0 +1,8 @@
+/target/
+/.apt_generated/
+/.settings/
+/data/
+/src/main/java/com/webproject/rest/mvc/Main.java
+/src/main/resources/webapp/app/test/
+/.factorypath
+.factorypath

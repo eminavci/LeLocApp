@@ -1,0 +1,157 @@
+<div ng-controller="adController" id="adController">
+    <div class="row" style="border-bottom: 2px solid #dcdcdc; padding-bottom: 6px; margin-top: 10px">
+       <div class="col-md-9">
+           <h3 class="only1line">{{realEstate.name}}</h3>
+       </div>
+        <div class="col-md-3 vcenter" style="margin-top:5px;">
+            <span class="advmbutton"><span class="glyphicon glyphicon-share" aria-hidden="true" style="color: #5C5858"></span>&nbsp;Share</span>
+            <span class="advmbutton"><span class="glyphicon glyphicon-print" aria-hidden="true" style="color: #5C5858"></span>&nbsp;Print</span>
+            <span class="advmbutton"><span class="glyphicon glyphicon-save" aria-hidden="true" style="color: #5C5858"></span>&nbsp;Add to My WatchList</span>
+        </div>
+
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <div class="col-md-5">
+            <div id="adMainImgDiv" class="vcenter">
+                <img ng-src="{{selectedImg.name}}" alt="{{realEstate.name}}"  class="img-responsive center-block" ng-click="showTheNext()">
+            </div>
+            <div id="adMainImgList">
+                <div id="adMainImgBiggerTool">
+                    <span class="advmbutton" style="float: left; margin-left:0px;" ng-click="open()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true" style="color: #00339f"></span>&nbsp;Mega Photo
+                    </span>
+                </div>
+                <ul id="adImgListThumb" >
+                    <li ng-repeat="img in realEstate.images">
+                        <label ng-click="selectedImg.name = img.name" ng-class="{'active' : selectedImg.name === img.name}" >
+                            <img ng-src="{{img.name}}"  class="img-responsive center-block" alt="{{realEstate.name}}">
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="cart" style="padding-left: 10px;">
+                <h4 id="adPrice">{{realEstate.price}} {{realEstate.currency}}</h4><br>
+                <p id="adtAdr">{{realEstate.address.country.name}} / {{realEstate.address.region.name}} / {{realEstate.address.city.name}} / {{realEstate.address.town.name}}</p>
+
+                <ul id="adPropList">
+                    <li><strong>Ad Number</strong><span style="color: #E80707">{{realEstate.no}}</span></li>
+                    <li><strong>Ad Date</strong><span>{{realEstate.publishDate | date:'MMM dd, yyyy'}}</span></li>
+                    <li
+                        ng-repeat="det in realEstate.details  | orderObjectBy:'showOrder'">
+                            <strong>{{det.title.name}}</strong><span>{{det.name}}</span>
+                    </li>
+
+                    <li style="border: none; margin-top: 14px">
+                        <span class="advmbutton" style="float:left">
+                            <span class="glyphicon glyphicon-flag" aria-hidden="true" style="color: #5C5858"></span>&nbsp;Report This Ad
+                            </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-default" >
+                <div class="panel-body" style="padding: 0px;">
+                    <div class="adOwner">
+                        <h5 id="adOwnerComp">Compnay Name here</h5>
+                        <h5 id="adOwnerName">XXXX YYYY</h5>
+                        <p class="text-muted">Registration Date Nov 2015</p>
+                        <span class="advmbutton" style="float: left; margin-left: 0px;">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true" style="color: #5C5858"></span>&nbsp;Other Ads</span><br><br>
+
+                        <div class="alert alert-default" id="adOwnerContactInfo">
+                            <strong>Cell Phone</strong> <span>(000) 1234 567 89</span>
+                            <hr/>
+                            <strong>Phone</strong> <span>(000) 1234 567 89</span>
+                        </div>
+                        <span class="advmbutton" style="float: left; margin-left: 6px;">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true" style="color: #5C5858"></span>&nbsp;Send a Message</span><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 2em">
+        <div class="col-md-12" id="adDetailDiv">
+            <tabset>
+                <tab>
+                    <tab-heading>
+                        <strong><span class="glyphicon glyphicon-check" aria-hidden="true"></span>&nbsp;Detail of Ad</strong>
+                    </tab-heading>
+                    <div class="col-md-12" >
+                        <div class="panel panel-default" >
+                            <div class="panel-heading" style="padding-left: 8px;">
+                                <h4 class="adDetPnlTitle collapsed" data-toggle="collapse" data-target="#descriptionid">Description</h4>
+                            </div>
+                            <div id="descriptionid" class="panel-body collapse in" style="padding: 12px">
+                                gfhgfhgf <br><br> gfhgfhgf <br><br> gfhgfhgf <br><br> gfhgfhgf <br><br> gfhgfhgf <br><br> gfhgfhgf <br><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" >
+                        <div class="panel panel-default" >
+                            <div class="panel-heading" style="padding-left: 8px;">
+                                <h4 class="adDetPnlTitle collapsed" data-toggle="collapse" data-target="#featureid">Features</h4>
+                            </div>
+                            <div id="featureid" class="panel-body collapse in" style="padding: 12px">
+                                <p class="adFeatureTitle">Frontage</p>
+                                <ul>
+                                    <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;East</li>
+                                    <li class="selected"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;West</li>
+                                    <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;South</li>
+                                    <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;North</li>
+
+                                    <li class="selected"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;East</li>
+                                    <li ><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;West</li>
+                                    <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;South</li>
+                                    <li class="selected"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;North</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" >
+                        <div class="panel panel-warning" >
+                            <div id="adUserWarning" class="panel-body">
+                                <p>Be careful when searching for real estate for rent or sale!</p>
+                                <p>LeLocApp's aim is to provide a secure trading platform for all users. For safe and secure trading of all users, please take care not to send a payment or deposit prior to your final decision. If you think that the information in the ad is misleading or incorrect, please contact us or report the ad by the link above.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </tab>
+                <tab>
+                    <tab-heading>
+                        <strong><span class="glyphicon glyphicon-map-marker" aria-hidden="true" ></span>&nbsp;Location</strong>
+                    </tab-heading>
+                    <div class="panel panel-default" >
+                        <div class="panel-body" style="padding: 0px">
+                            Adress : <br>
+                                <p>{{realEstate.address.line1}} {{realEstate.address.line2}} {{realEstate.address.town.name}}
+                            {{realEstate.address.city.name}} {{realEstate.address.region.name}} {{realEstate.address.postCode}}</p>
+                        </div>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="template/pic-modal.html">
+    <div class="modal-body">
+        <div class="img-group">
+            <carousel>
+                <slide ng-repeat="thumb in realEstate.images" active="thumb.active">
+                    <img ng-src="{{thumb.name}}" alt="{{realEstate.name}}" class="img-responsive pic" />
+                    <div class="carousel-caption">{{realEstate.name}}</div>
+                </slide>
+            </carousel>
+            <button type="button" class="close close-lg" ng-click="ok()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        </div>
+    </div>
+</script>

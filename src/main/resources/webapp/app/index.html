@@ -1,0 +1,153 @@
+<html lang="en" ng-app="LeLocApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Deneme Index</title>
+
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/css/app.css" rel="stylesheet">
+
+        <script type="application/javascript" src="../static/js/angular/angular.min.js" ></script>
+        <script type="application/javascript" src="../static/js/angular/angular-route.js" ></script>
+        <script type="application/javascript" src="../static/js/angular/angular-resource.js" ></script>
+        <script type="application/javascript" src="../static/js/angular/angular-animate.min.js"></script>
+        <script type="application/javascript" src="../static/js/angular/angular-messages.min.js"></script>
+        <script type="application/javascript" src="../static/js/angular/loading-bar.js"></script>
+        <script type="application/javascript" src="../static/js/angular/angular-sanitize.min.js"></script>
+        <script type="application/javascript" src="../static/js/angular/fcsaNumber.min.js"></script>
+        <script type="application/javascript" src="../static/js/angular/ngStorage.min.js"></script>
+        <script type="application/javascript" src="../static/js/angular/angular-promise-extras.js"></script>
+        <script type="application/javascript" src="../static/js/angular/ng_only_number.js"></script>
+        <script type="application/javascript" src="../static/js/angular/angular-cookies.js"></script>
+      <!--  <script type="application/javascript" src="../static/js/angular/angular-hateoas.js"></script>-->
+
+
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
+
+        <script type="application/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="application/javascript" src="../app/app.js" ></script>
+        <script type="application/javascript" src="../app/controllers/home.js"></script>
+        <script type="application/javascript" src="../app/controllers/advertise.js"></script>
+        <script type="application/javascript" src="../app/controllers/search.js"></script>
+        <script type="application/javascript" src="../app/controllers/user.js"></script>
+        <script type="application/javascript" src="../app/controllers/realestate.js"></script>
+
+
+        <script type="application/javascript" src="../app/services/category.js"></script>
+        <script type="application/javascript" src="../app/services/places.js"></script>
+        <script type="application/javascript" src="../app/services/user.js"></script>
+        <script type="application/javascript" src="../app/services/realestate.js"></script>
+        <script type="application/javascript" src="../app/services/common.js"></script>
+        <script type="application/javascript" src="../app/filters/common.js"></script>
+        <script type="application/javascript" src="../app/directives/common.js"></script>
+
+        <script type="application/javascript" src="../static/js/angular/bootstrap.min.js" ></script>
+
+        <link href="../static/css/jquery.filer.css" rel="stylesheet" />
+        <link href="../static/css/jquery.filer-dragdropbox-theme.css" rel="stylesheet" />
+        <script type="text/javascript" src="../static/js/angular/jquery.filer.min.js"></script>
+
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+    </head>
+    <body >
+        <div id="wrap">
+            <div class="page-row">
+                <nav class=" navbar navbar-default navbar-static-top" style="border:none;  border-radius:0px;min-height:52px; margin-bottom: 18px;">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header pull-left">
+                            <a class="navbar-brand" href="#/">LeLocApp</a>
+                        </div>
+                        <div class="navbar-left" style="position: relative;margin-left:60px">
+                            <form class="navbar-form" id="search" role="search" name="search" action="#/search" method="get" >
+                                <input type="text" name="searchText" id="searchText" class="form-control">
+                                <input type="submit" id="searchSbt" name="searchSbt" value="Ara">
+                                <span id="searchHint">Search</span>
+                                <!--                            <a href="#advancedsearch">Advanced Search</a>-->
+                            </form>
+                        </div>
+                                            <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="navbar-header pull-right" id="bs-example-navbar-collapse-1" ng-controller="userBarController">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li ng-hide="globals.currentUser.firstName"><a href="#/login">Sign In</a></li>
+                                <li ng-hide="globals.currentUser.firstName"><a href="#/register">Register</a></li>
+                                <li ng-show="globals.currentUser.firstName"><a href="#/home">{{globals.currentUser.firstName}} {{globals.currentUser.lastName}}</a></li>
+        <!--                        if there is session close login and register links and open below-->
+                                <!--
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+        </ul>
+        </li>
+        -->
+                                <li>
+                                    <p class="navbar-btn" ng-hide="globals.currentUser.firstName">
+                                        <a ng href="#/login" class="btn btn-primary btn-md post-ads-btn">
+                                            <span class="glyphicon glyphicon glyphicon-send" aria-hidden="true"></span>
+                                            Publish Ads For Free
+                                        </a>
+                                    </p>
+                                    <p class="navbar-btn" ng-show="globals.currentUser.firstName">
+                                        <a ng href="#/adsforfree" class="btn btn-primary btn-md post-ads-btn">
+                                            <span class="glyphicon glyphicon glyphicon-send" aria-hidden="true"></span>
+                                            Publish Ads For Free
+                                        </a>
+                                    </p>
+
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </nav>
+            </div>
+            <div ng-controller="msgController" id="msgdiv"
+                 ng-class="{1:'successMSg', 2:'infoMsg', 3:'warningMSg', 4:'errorMsg'}[msgData.msgType]"
+                 ng-show="msgData.isShowMsg" ng-cloak>
+                <span>{{msgData.customMsg}}</span>
+                <img src="../static/icons/close.png" width="20" height="20" ng-click="msgData.isShowMsg = false">
+            </div>
+            <div id="mainBody" class="page-row page-row-expanded">
+                <div class="container" style="padding-left:0px; padding-right: 0px;">
+        <!--    ========================================================
+                        CONTENT OF PAGES
+                ======================================================== -->
+
+                    <div ng-view></div>
+
+         <!--   ========================================================
+                        END CONTENT OF PAGES
+                ======================================================== -->
+                </div>
+            </div>
+            <div class="page-row" id="footer">
+
+               <div id="footerWrapper">
+
+                   <div class="container" style="padding: 30px 0px 20px 0px ">
+
+                       <h2 style="text-align:center">FOOTER CONTENT IS HERE!</h2>
+
+                   </div>
+                </div>
+
+            </div>
+        </div> <!-- End of #wrap-->
+        <script type="application/javascript" src="../static/js/angular/my_js.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=true&extension=.js&output=embed"></script>
+    </body>
+</html>
